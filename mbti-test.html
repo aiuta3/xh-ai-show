@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBTI调查问卷</title>
+<style>
+  body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #1a202c;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  label {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4b5563;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  input[type="submit"]:hover {
+    background-color: #374151;
+  }
+  #result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e2e8f0;
+    color: #4b5563;
+    border-radius: 5px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>MBTI调查问卷</h1>
+  <form id="mbtiForm">
+    <!-- 外向(E)/内向(I) -->
+    <div>
+      <label>1. 你更喜欢：</label>
+      <label><input type="radio" name="ei" value="E">外向(E)</label>
+      <label><input type="radio" name="ei" value="I">内向(I)</label>
+    </div>
+
+    <!-- 感觉(S)/直觉(N) -->
+    <div>
+      <label>2. 你倾向于：</label>
+      <label><input type="radio" name="sn" value="S">感觉(S)</label>
+      <label><input type="radio" name="sn" value="N">直觉(N)</label>
+    </div>
+
+    <!-- 思考(T)/情感(F) -->
+    <div>
+      <label>3. 你做决策时：</label>
+      <label><input type="radio" name="tf" value="T">思考(T)</label>
+      <label><input type="radio" name="tf" value="F">情感(F)</label>
+    </div>
+
+    <!-- 判断(J)/感知(P) -->
+    <div>
+      <label>4. 你更喜欢的生活方式是：</label>
+      <label><input type="radio" name="jp" value="J">判断(J)</label>
+      <label><input type="radio" name="jp" value="P">感知(P)</label>
+    </div>
+
+    <input type="submit" value="提交">
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById('mbtiForm').onsubmit = function(event) {
+    event.preventDefault();
+    var ei = document.querySelector('input[name="ei"]:checked').value;
+    var sn = document.querySelector('input[name="sn"]:checked').value;
+    var tf = document.querySelector('input[name="tf"]:checked').value;
+    var jp = document.querySelector('input[name="jp"]:checked').value;
+
+    var mbtiType = ei + sn + tf + jp;
+    var mbtiDescriptions = {
+      "ESTJ": "务实、负责、喜欢有序和结构化的环境。",
+      "ESFJ": "忠诚、体贴、关心他人，喜欢维护和谐的环境。",
+      "ENFJ": "鼓舞人心、热情、喜欢领导和激励他人。",
+      "ENTJ": "战略领导者，喜欢计划和组织。",
+      "ESTP": "冒险、实际、反应快，喜欢行动和挑战。",
+      "ESFP": "外向、友好、喜欢社交和娱乐。",
+      "ENFP": "热情、创造性、寻求新的可能性。",
+      "ENTP": "创新、聪明、喜欢辩论和挑战传统。",
+      "ISTJ": "务实、负责、勤奋，喜欢有序和结构化的环境。",
+      "ISFJ": "忠诚、体贴、关心他人，喜欢维护和谐的环境。",
+      "INFJ": "理想主义者，富有洞察力，喜欢帮助他人实现潜能。",
+      "INTJ": "战略思考者，独立，喜欢理论和抽象概念。",
+      "ISTP": "实用、灵活，喜欢分析和解决问题。",
+      "ISFP": "敏感、和谐，喜欢艺术和美学。",
+      "INFP": "理想主义者，寻求内在价值和个人成长。",
+      "INTP": "逻辑思考者，喜欢理论和抽象概念，独立。"
+    };
+
+    var description = mbtiDescriptions[mbtiType] || "暂无描述，请完成所有问题。";
+    document.getElementById('result').textContent = "你的MBTI类型是: " + mbtiType + "\n" + description;
+    document.getElementById('result').style.display = 'block';
+  };
+</script>
+</body>
+</html>
