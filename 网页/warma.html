@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我已经完全爱上Warma了</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding:0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #fa766d 0%, #c3cfe2 100%);
+            align-items: center;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8![](warma_avatar.png)px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: #ff765a;
+            margin: 28px;
+            font-size:55px
+        }
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile img {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 4px solid #fa766d;/* 低饱和度的西瓜红 */
+            animation: popIn 1s ease forwards;
+        }
+        .profile video{
+            width: 400px;
+            height: 250px;
+            border:10px solid #fa766d;
+            animation: popIn 1s ease forwards;
+            margin-bottom: 20px;
+        }
+        .profile p {
+            color: #666;
+            font-size:12px;
+        }
+        .content {
+            padding: 20px;
+            border-left: 4px solid #e55d87;
+        }
+        .content h2 {
+            color: #fa766d;
+            margin-bottom: 10px;
+        }
+        .content p {
+            color: #666;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #fa766d;
+            color: #fff;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* 调整弹窗宽度 */
+            border-radius: 8px;
+            animation: modalOpen 0.5s ease forwards;
+            justify-content: center;
+        }
+        @keyframes modalOpen {
+            from {
+                transform: translateY(-100%) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-btn {
+            margin-top: 20px;
+        }
+        .modal-btn button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .modal-btn button:first-child {
+            background-color: #fa766d;
+            color: #fff;
+        }
+        .modal-btn button:last-child {
+            background-color: #fff;
+            color: #fa766d;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 280px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .emoji {
+            width: 100px; /* 根据需要调整大小 */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="welcomeModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>欢迎来到Warma的世界！<br>你喜欢Warma吗？</p>
+        <div class="modal-btn">
+            <button class="yes-btn">太好了是Warma我们有救了！</button>
+            <button class="no-btn">Warma是谁我只知道沃尔玛商场</button>
+        </div>
+    </div>
+</div>
+
+<div id="savedModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p><strong>太好了是Warma我们有救了！</strong><img src="warma_emoji3.jpg" alt="沃沃头表情包3" class="emoji"> <!-- 添加表情包 --></p>
+    </div>
+</div>
+
+<div id="learnModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>你愿意通过这个网页了解Warma吗？</p>
+        <div class="modal-btn">
+            <button class="willing-btn">愿意</button>
+            <button class="unwilling-btn">不愿意(真的要选这个吗？)</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <header>
+        <h1>Warma的奇想世界</h1>
+    </header>
+    <div class="profile">
+        <img src="warma_avatar.png" alt="Warma头像"> <!-- 替换为Warma的头像图片 -->
+        <h2>Warma</h2>
+        <h5>B站UP主，多才多艺，深受粉丝喜爱。</br>ps:所以什么时候更新爆炸电台啊！</h5>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1430274303&auto=1&height=66"></iframe>
+        <p>点击播放歌曲👆</p>
+    </div>
+    <section class="content">
+        <h2>代表作品</h2>
+        <ul>
+            <li>《我家里有蜘蛛！！！》</li>
+            <li>《爆炸电台BOOM~》</li>
+            <li>《我制作了免费的养宠物游戏！》</li>
+            <li>《好玩到忘记时间！永远会回应你的好奇心的《动物井》实况》</li>
+        </ul>
+        <p>warma正在看着你...</p>
+        <div class="gallery">
+            <img src="work1.jpg" alt="代表作品1">
+            <img src="work2.jpg" alt="代表作品2">
+            <img src="work3.jpg" alt="代表作品3">
+            <img src="work4.jpg" alt="代表作品4">
+    </section>
+    <section class="content">
+            <h2>音乐作品</h2>
+            <ul>
+                <li>《一话一世界（方言合唱版）》</li>
+                <li>《我家里有蜘蛛！！！》</li>
+                <li>《I really ∞（翻自Carly Rae Jepsen）》</li>
+            </ul>
+            <p>Warma也有许多音乐作品，包括翻唱和原创歌曲。</p>
+    </section>
+
+    <section class="content">
+        <h2>关于Warma</h2>
+        <p>Warma，本名沃玛，别名忆雨等，是一位在B站非常知名的UP主，以其多才多艺和独特的个人风格深受粉丝喜爱。</p>
+        <p>Warma的视频类型非常广泛，包括动画与手书、歌唱与配音、游戏实况与解说、杂谈与生活分享等，视频各环节内容几乎皆为一人完成，具有强烈的个人风格。</p>
+    </section>
+
+    <footer>
+        <p>感谢您的访问，希望您喜欢Warma的作品！<img src="warma_emoji4.jpg" alt="沃沃头表情包4" class="emoji"> <!-- 添加表情包 --></p>
+    </footer>
+</div>
+
+<script>
+// 获取弹窗元素
+var welcomeModal = document.getElementById("welcomeModal");
+var savedModal = document.getElementById("savedModal");
+var learnModal = document.getElementById("learnModal");
+var closeWelcome = welcomeModal.getElementsByClassName("close")[0];
+var closeSaved = savedModal.getElementsByClassName("close")[0];
+var closeLearn = learnModal.getElementsByClassName("close")[0];
+var yesBtn = welcomeModal.getElementsByClassName("yes-btn")[0];
+var noBtn = welcomeModal.getElementsByClassName("no-btn")[0];
+var willingBtn = learnModal.getElementsByClassName("willing-btn")[0];
+var unwillingBtn = learnModal.getElementsByClassName("unwilling-btn")[0];
+
+// 显示欢迎弹窗
+window.onload = function() {
+    welcomeModal.style.display = "flex";
+}
+
+// 点击<x>按钮关闭弹窗
+closeWelcome.onclick = function() {
+    welcomeModal.style.display = "none";
+}
+closeSaved.onclick = function() {
+    savedModal.style.display = "none";
+}
+closeLearn.onclick = function() {
+    learnModal.style.display = "none";
+}
+
+// 选择“太好了是Warma我们有救了！”
+yesBtn.onclick = function() {
+    welcomeModal.style.display = "none";
+    savedModal.style.display = "flex";
+}
+
+// 选择“Warma是谁我只知道沃尔玛商场”
+noBtn.onclick = function() {
+    welcomeModal.style.display = "none";
+    learnModal.style.display = "flex";
+}
+
+// 选择“愿意”关闭弹窗
+willingBtn.onclick = function() {
+    learnModal.style.display = "none";
+    welcomeModal.style.display = "none";
+    savedModal.style.display = "flex";
+}
+
+// 选择“不愿意”再次弹出弹窗
+unwillingBtn.onclick = function() {
+learnModal.style.display = "none";
+setTimeout(() => {
+learnModal.style.display = "flex";
+}, 200); // 等待200毫秒后再次显示学习意愿弹窗
+}
+</script>
+
+</body>
+</html>
