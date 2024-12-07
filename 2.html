@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Video Example</title>
-<script>
-function onVideoError() {
-  var video = document.getElementById('myVideo');
-  video.style.display = 'none'; // 隐藏视频元素
-  var errorMessage = document.getElementById('video-error');
-  errorMessage.style.display = 'block'; // 显示错误信息
-}
-</script>
+<head> 
+  <title>农夫与蛇</title>
+  <link rel="shortcut icon" href="./favicon.ico">
+  <style>
+    body { color:black; }
+    ul {color: green; }
+  </style>
 </head>
 <body>
- 
-<!-- 视频元素 -->
-<video id="myVideo" width="320" height="240" controls onerror="onVideoError();">
+  <h1>农(nong)夫(fu)与(yu)蛇(she)</h1>
+  <ul>1.有一个寒冷的冬夜，农夫在路边捡拾到一条被冻僵的毒蛇</ul>
+  <ul>2.他觉得蛇很可怜，于是便把蛇搂在怀中，为它取暖。</ul>
+  <ul>3.当蛇醒来，竟向着农夫的胸口大力一咬，令他中毒死亡</ul>
+  <ul>4.临死前农夫叹道：“我该死，我怜悯恶人，应该受恶报。”</ul>
+  <img src="nongfu.png">
+  <video id="myVideo" width="320" height="240" controls onerror="onVideoError();">
   <source src="扭蛋3.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
- 
-<!-- 视频加载错误时显示的提示信息 -->
-<div id="video-error" style="display:none;">
-  The video could not be loaded.
-</div>
- 
+  </video>
+  <p>有一个寒冷的冬夜，农夫在路边捡拾到一条被冻僵的毒蛇，他觉得蛇很可怜，于是便把蛇搂在怀中，为它取暖。当蛇醒来，竟向着农夫的胸口大力一咬，令他中毒死亡。</br>
+  但故事的结局有许多版本。在希腊语的版本中，临死前农夫叹道：“我该死，我怜悯恶人，应该受恶报。”</p>
 </body>
 </html>
