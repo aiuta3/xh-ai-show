@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Adventure</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ocean-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2em;
+    position: absolute;
+    will-change: transform;
+  }
+  .shallow-water { background-color: #a0e8f9; transform: translateY(0); }
+  .deep-water { background-color: #0084c4; transform: translateY(-100%); }
+  .deeper-water { background-color: #004a7f; transform: translateY(-200%); }
+  .emoji {
+    position: absolute;
+    will-change: transform;
+  }
+  @keyframes swim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes slowSwim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .swimming {
+    animation: swim 5s linear infinite;
+  }
+  .slow-swimming {
+    animation: slowSwim 10s linear infinite;
+  }
+</style>
+</head>
+<body>
+
+<div class="ocean-page shallow-water">
+  <div class="emoji swimming" style="font-size: 2em; top: 20%; left: 80%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji swimming" style="font-size: 1.5em; top: 50%; left: 70%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji slow-swimming" style="font-size: 1em; top: 80%; left: 60%;">&#x1F422;</div> <!-- Turtle -->
+  <div class="emoji" style="font-size: 1.5em; top: 40%; left: 50%;">&#x1F41A;</div> <!-- Dolphin -->
+  <div class="emoji" style="font-size: 1em; top: 30%; left: 40%;">&#x1F38D;</div> <!-- Seaweed -->
+  <div class="page-title">Shallow Water</div>
+  <p>Welcome to the shallow waters of the ocean.</p>
+</div>
+<div class="ocean-page deep-water">
+  <div class="emoji swimming" style="font-size: 2em; top: 10%; left: 20%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji slow-swimming" style="font-size: 1.5em; top: 40%; left: 30%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji slow-swimming" style="font-size: 1em; top: 70%; left: 40%;">&#x1F422;</div> <!-- Turtle -->
+  <div class="emoji" style="font-size: 1.5em; top: 50%; left: 50%;">&#x1F41F;</div> <!-- Starfish -->
+  <div class="emoji" style="font-size: 1em; top: 60%; left: 60%;">&#x1F38D;</div> <!-- Seaweed -->
+  <div class="emoji" style="font-size: 1.5em; top: 20%; left: 80%;">&#x1F420;</div> <!-- Seaweed -->
+  <div class="page-title">Deep Water</div>
+  <p>Dive deeper into the ocean's mysteries.</p>
+</div>
+<div class="ocean-page deeper-water">
+  <div class="emoji swimming" style="font-size: 2em; top: 30%; left: 40%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji slow-swimming" style="font-size: 1.5em; top: 60%; left: 50%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji slow-swimming" style="font-size: 1em; top: 90%; left: 60%;">&#x1F422;</div> <!-- Turtle -->
+  <div class="emoji" style="font-size: 1.5em; top: 70%; left: 70%;">&#x1F41A;</div> <!-- Dolphin -->
+  <div class="emoji" style="font-size: 1em; top: 40%; left: 80%;">&#x1F38D;</div> <!-- Seaweed -->
+  <div class="emoji" style="font-size: 1em; top: 50%; left: 20%;">&#x1F38D;</div> <!-- Seaweed -->
+  <div class="emoji swimming" style="font-size: 2em; top: 40%; left: 20%;">&#x1F420;</div> <!-- Jellyfish -->
+  <div class="emoji" style="font-size: 1.5em; top: 50%; left: 60%;">&#x1F420;</div> <!-- Coral -->
+  <div class="page-title">Deeper Water</div>
+  <p>Explore the darkest depths of the ocean.</p>
+</div>
+
+<script>
+  let startY = 0;
+  let isSwiping = false;
+  let currentPage = 0;
+
+  const pages = document.querySelectorAll('.ocean-page');
+  const touchStart = (e) => {
+    startY = e.touches[0].clientY;
+    isSwiping = true;
+  };
+
+  const touchMove = (e) => {
+    if (!isSwiping) return;
+    e.preventDefault(); // Prevent scrolling
+  };
+
+  const touchEnd = (e) => {
+    if (!isSwiping) return;
+    const endY = e.changedTouches[0].clientY;
+    const diff = endY - startY;
+
+    if (diff > 50 && currentPage < pages.length - 1) { // swipe down
+      pages[currentPage].style.transform = 'translateY(100%)';
+      pages[++currentPage].style.transform = 'translateY(0)';
+    } else if (diff < -50 && currentPage > 0) { // swipe up
+      pages[currentPage].style.transform = 'translateY(-100%)';
+      pages[--currentPage].style.transform = 'translateY(0)';
+    }
+    isSwiping = false;
+  };
+
+  document.addEventListener('touchstart', touchStart, { passive: false });
+  document.addEventListener('touchmove', touchMove, { passive: false });
+  document.addEventListener('touchend', touchEnd, { passive: false });
+</script>
+
+</body>
+</html>
