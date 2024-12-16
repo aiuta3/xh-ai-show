@@ -55,11 +55,18 @@
 <body>
 
 <div class="ocean-page shallow-water">
-  <div class="emoji swimming" style="font-size: 2em; top: 20%; left: 80%;">&#x1F420;</div> <!-- Fish -->
+  <div class="emoji swimming" style="font-size: 2em; top: 80%; left: 80%;">&#x1F420;</div> <!-- Fish -->
   <div class="emoji swimming" style="font-size: 1.5em; top: 50%; left: 70%;">&#x1F420;</div> <!-- Fish -->
   <div class="emoji slow-swimming" style="font-size: 1em; top: 80%; left: 60%;">&#x1F422;</div> <!-- Turtle -->
-  <div class="emoji" style="font-size: 1.5em; top: 40%; left: 50%;">&#x1F41A;</div> <!-- Dolphin -->
-  <div class="emoji" style="font-size: 1em; top: 30%; left: 40%;">&#x1F38D;</div> <!-- Seaweed -->
+  <div class="emoji" style="font-size: 1em; top: 40%; left: 50%;">&#x1F41A;</div> <!-- Dolphin -->
+  <div class="emoji" style="font-size: 1em; top: 10%; left: 50%;">🐬</div> <!-- Dolphin -->
+  <div class="emoji slow-swimming" style="font-size: 1em; top: 90%; left: 40%;">🪱</div> <!-- Turtle -->
+  <div class="emoji" style="font-size: 1em; top: 30%; left: 40%;">⭐</div> <!-- Snail -->
+  <div class="emoji" style="font-size: 1em; top: 30%; left: 60%;">&#x1F438;</div> <!-- Frog -->
+  <div class="emoji swimming" style="font-size: 1em; top: 20%; left: 40%;">🧚🏻</div>
+  <div class="emoji" style="font-size: 1em; top: 25%; left: 20%;">🐊</div>
+  <div class="emoji swimming" style="font-size: 3em; top: 15%; left: 80%;">🐳</div>
+
   <div class="page-title">Shallow Water</div>
   <p>Welcome to the shallow waters of the ocean.</p>
 </div>
@@ -67,9 +74,9 @@
   <div class="emoji swimming" style="font-size: 2em; top: 10%; left: 20%;">&#x1F420;</div> <!-- Fish -->
   <div class="emoji slow-swimming" style="font-size: 1.5em; top: 40%; left: 30%;">&#x1F420;</div> <!-- Fish -->
   <div class="emoji slow-swimming" style="font-size: 1em; top: 70%; left: 40%;">&#x1F422;</div> <!-- Turtle -->
-  <div class="emoji" style="font-size: 1.5em; top: 50%; left: 50%;">&#x1F41F;</div> <!-- Starfish -->
-  <div class="emoji" style="font-size: 1em; top: 60%; left: 60%;">&#x1F38D;</div> <!-- Seaweed -->
-  <div class="emoji" style="font-size: 1.5em; top: 20%; left: 80%;">&#x1F420;</div> <!-- Seaweed -->
+  <div class="emoji swimming" style="font-size: 1.5em; top: 50%; left: 50%;">🪼</div> <!-- Jellyfish -->
+  <div class="emoji" style="font-size: 1.5em; top: 20%; left: 80%;">&#x1F420;</div> <!-- Coral -->
+  <div class="emoji swimming" style="font-size: 2em; top: 30%; left: 60%;">🐙</div> <!-- Frog -->
   <div class="page-title">Deep Water</div>
   <p>Dive deeper into the ocean's mysteries.</p>
 </div>
@@ -77,11 +84,10 @@
   <div class="emoji swimming" style="font-size: 2em; top: 30%; left: 40%;">&#x1F420;</div> <!-- Fish -->
   <div class="emoji slow-swimming" style="font-size: 1.5em; top: 60%; left: 50%;">&#x1F420;</div> <!-- Fish -->
   <div class="emoji slow-swimming" style="font-size: 1em; top: 90%; left: 60%;">&#x1F422;</div> <!-- Turtle -->
-  <div class="emoji" style="font-size: 1.5em; top: 70%; left: 70%;">&#x1F41A;</div> <!-- Dolphin -->
-  <div class="emoji" style="font-size: 1em; top: 40%; left: 80%;">&#x1F38D;</div> <!-- Seaweed -->
-  <div class="emoji" style="font-size: 1em; top: 50%; left: 20%;">&#x1F38D;</div> <!-- Seaweed -->
-  <div class="emoji swimming" style="font-size: 2em; top: 40%; left: 20%;">&#x1F420;</div> <!-- Jellyfish -->
-  <div class="emoji" style="font-size: 1.5em; top: 50%; left: 60%;">&#x1F420;</div> <!-- Coral -->
+  <div class="emoji swimming" style="font-size: 1.5em; top: 70%; left: 70%;">🐡</div> <!-- Jellyfish -->
+  <div class="emoji" style="font-size: 1.5em; top: 40%; left: 20%;">&#x1F420;</div> <!-- Coral -->
+  <div class="emoji" style="font-size: 1.5em; top: 50%; left: 60%;">🦞</div> <!-- Lobster -->
+  <div class="emoji slow-swimming" style="font-size: 3em; top: 20%; left: 80%;">🧜</div> <!-- Seahorse -->
   <div class="page-title">Deeper Water</div>
   <p>Explore the darkest depths of the ocean.</p>
 </div>
@@ -105,7 +111,7 @@
   const touchEnd = (e) => {
     if (!isSwiping) return;
     const endY = e.changedTouches[0].clientY;
-    const diff = endY - startY;
+    const diff = startY - endY;
 
     if (diff > 50 && currentPage < pages.length - 1) { // swipe down
       pages[currentPage].style.transform = 'translateY(100%)';
